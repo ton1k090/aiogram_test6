@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher
-from handlers import bot_messages, user_commands
+from handlers import bot_messages, user_commands, questionaire
 from callback import pagination
 from config_reader import config
 
@@ -15,6 +15,7 @@ async def main():
     dp.include_routers(
         user_commands.router,
         pagination.router,
+        questionaire.router,
         bot_messages.router
 
     )

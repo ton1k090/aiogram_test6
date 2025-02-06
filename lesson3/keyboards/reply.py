@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPollType
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPollType, ReplyKeyboardRemove
 
 main_kb = ReplyKeyboardMarkup(
     keyboard=[
@@ -9,7 +9,8 @@ main_kb = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='calculate'),
             KeyboardButton(text='special buttons')
-        ]
+        ],
+        [KeyboardButton(text='/profile')]
     ],
     resize_keyboard=True,
     one_time_keyboard=True, # наша клавиатура будет скрываться после первого нажатия
@@ -30,3 +31,6 @@ spec_kb = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
+
+
+rmk =ReplyKeyboardRemove()
