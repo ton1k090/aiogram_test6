@@ -6,13 +6,14 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import CommandStart, Command, CommandObject
 from aiogram.types import CallbackQuery, Message
 
+from lesson3.filters.is_admin import IsAdmin
+from lesson3.filters.is_digit_or_float import CheckForDigit
 from lesson3.keyboards import reply
 from lesson3.keyboards.reply import main_kb
 
 from aiogram import Router, Bot
 
 router = Router()
-
 
 
 @router.message(CommandStart())
@@ -29,6 +30,12 @@ async def get_random_number(message: Message, command: CommandObject):
     rnum = random.randint(a, b)
     await message.reply(f'Random number {rnum}')
 
+
 @router.message(Command('test'))
 async def test(message: Message, bot: Bot):
     await bot.send_message(message.chat.id, 'test')
+
+
+@router.message(Command('pay'), CheckForDigit()) # Добавляем класс фильтра для проверки на число
+async def pay_the_order(message: Message, command: CommandObject): #в команду можно передать аргументы
+    await message.answer('Your pay success')

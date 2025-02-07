@@ -8,3 +8,11 @@ links_kb = InlineKeyboardMarkup(
         ],
     ]
 )
+
+sub_channel = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='subscribe', url='https://t.me/cmtz')
+        ]
+    ]
+)
